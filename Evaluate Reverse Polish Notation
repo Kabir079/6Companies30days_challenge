@@ -1,29 +1,18 @@
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
-        stack = [] 
-        def isnum(s):
-            try:
-                int(s)
-                return True
-            except:
-                return False
-
-        for t in tokens:
-            if isnum(t):
-                stack.append(t)
-
-        for c in tokens:
-            if c == "+":
-                a,b = stack.pop(), stack.pop()
-                stack.append(int(a) + int(b))
-            elif c == "*":
-                a,b = stack.pop(), stack.pop()
-                stack.append(int(a) * int(b))
-            elif c == "-":
-                a , b = stack.pop, stack.pop
-                stack.append(int(b-a))
-            elif c == "/":
-                a , b = stack.pop, stack.pop
-                stack.append(int(b/a))
+        stack = []   # intializing the stack
+        for i in tokens:  #interating through the stacks
+            if i == "+":
+                stack.append(stack.pop() + stack.pop())
+            elif i == "-":
+                a, b = stack.pop(), stack.pop()
+                stack.append(b - a)
+            elif i == "*":
+                stack.append(stack.pop() * stack.pop())
+            elif i == "/":
+                a,b = stack.pop(),stack.pop() 
+                stack.append(int(b/a))   #applied int() cuz b/a will give us decimal 
+            else:
+                stack.append(int(i))     #if i is not any of 4 operators, then it is a number.
 
         return stack[0]
