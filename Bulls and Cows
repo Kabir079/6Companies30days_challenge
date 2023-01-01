@@ -1,12 +1,22 @@
 class Solution:
     def getHint(self, secret: str, guess: str) -> str:
-        bulls = 0 
-        bucket = [0] * 10 
+        bull, cow = 0,0
+        s = list(secret)  #coverting into list
+        g = list(guess)   #coverting into list
 
-        for s, g in zip(secret, guess):
-            if s == g:
-                bulls += 1
-            else:
-                bucket[int(s)] += 1
-                bucket[int(g)] += 1
-        return f'{bulls}A{len(secret)-bulls-sum(x for x in bucket if x>0)}B'
+        i,j = 0,0
+        while i < len(secret):    
+            if s[j] == g[j]:
+                bull += 1 
+                s.pop(j)
+                g.pop(j)
+            else: 
+                j += 1
+            i += 1
+        count = Counter(s)
+        for l in g:
+            if l in count and count[l] > 0 :
+                cow += 1 
+                count[l] -= 1
+
+        return "{}A{}B".format(bull,cow)
