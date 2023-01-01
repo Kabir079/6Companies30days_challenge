@@ -1,0 +1,14 @@
+"""
+This is a file where I jot down what all question were done and on what day, inorder to keep a track of mind and brainstorming.
+Benefits :
+1.Will be able to look back and see what all questions I have solved. 
+2.Will be able to find logic back.
+
+"""
+Questions done : 
+
+During : 30th Dec 2022 and 1st Jan 2023
+1. Evaluate RPN 
+2. Combination Sum III
+3. Bulls and Cows
+
